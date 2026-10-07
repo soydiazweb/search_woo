@@ -1,0 +1,144 @@
+.swoo-search {
+	position: relative;
+	width: 100%;
+	max-width: var(--swoo-max-width);
+	color: var(--swoo-text);
+	font-family: inherit;
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 1.4;
+}
+
+.swoo-search *,
+.swoo-search *::before,
+.swoo-search *::after {
+	box-sizing: border-box;
+}
+
+.swoo-form {
+	display: flex;
+	position: relative;
+	margin: 0;
+}
+
+.swoo-input {
+	width: 100%;
+	min-height: 42px;
+	padding: 10px 42px 10px 16px;
+	border: 1px solid var(--swoo-border);
+	background: var(--swoo-bg);
+	color: var(--swoo-text);
+	font: inherit;
+	font-size: 16px;
+	font-weight: 400;
+	outline: none;
+}
+
+.swoo-style-rounded .swoo-input { border-radius: 24px; }
+.swoo-style-pirx-compact .swoo-input { border-color: transparent; border-radius: 22px; background: #f7f7f7; }
+.swoo-input:focus { border-color: var(--swoo-hover); box-shadow: 0 0 0 3px color-mix(in srgb, var(--swoo-hover) 25%, transparent); }
+
+.swoo-loader {
+	display: none;
+	position: absolute;
+	right: 15px;
+	top: 50%;
+	width: 16px;
+	height: 16px;
+	margin-top: -8px;
+	border: 2px solid #ddd;
+	border-top-color: var(--swoo-hover);
+	border-radius: 50%;
+	animation: swoo-spin .75s linear infinite;
+}
+
+.is-loading .swoo-loader { display: block; }
+.swoo-submit { margin-left: 6px; padding: 0 18px; border: 0; border-radius: 6px; background: var(--swoo-button-color); color: #fff; }
+
+.swoo-results {
+	display: flex;
+	position: absolute;
+	z-index: 99999;
+	left: 0;
+	right: 0;
+	top: calc(100% + 6px);
+	flex-direction: column;
+	overflow: hidden;
+	max-height: min(70vh, 520px);
+	border: 1px solid var(--swoo-border);
+	border-radius: 10px;
+	background: var(--swoo-bg);
+	box-shadow: 0 12px 30px rgba(22, 18, 29, .14);
+}
+
+.swoo-results[hidden] { display: none; }
+.swoo-results-list { min-height: 0; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; }
+
+.swoo-result {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 14px;
+	padding: 13px 15px;
+	border-bottom: 1px solid var(--swoo-border);
+	color: var(--swoo-text);
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.35;
+	text-decoration: none;
+}
+
+.swoo-result:hover,
+.swoo-result:focus,
+.swoo-result.is-active { background: color-mix(in srgb, var(--swoo-hover) 18%, var(--swoo-bg)); color: var(--swoo-text); outline: none; }
+
+.swoo-result-main { display: flex; align-items: center; gap: 11px; min-width: 0; }
+.swoo-result-main > span { min-width: 0; }
+.swoo-result-main img { flex: 0 0 auto; width: 48px; height: 48px; border-radius: 6px; object-fit: cover; }
+.swoo-result-title { display: block; font-size: 15px; font-weight: 500; line-height: 1.35; }
+.swoo-result small { display: block; margin-top: 4px; color: color-mix(in srgb, var(--swoo-text) 70%, transparent); font-size: 12.5px; font-weight: 400; line-height: 1.4; }
+
+.swoo-price,
+.swoo-price * { font-size: 14px; font-weight: 400; }
+.swoo-price { flex: 0 0 auto; white-space: nowrap; }
+.swoo-price del { opacity: .55; }
+.swoo-price ins { font-weight: 500; text-decoration: none; }
+
+.swoo-message,
+.swoo-approx { padding: 13px 15px; font-weight: 400; }
+.swoo-approx { border-bottom: 1px solid var(--swoo-border); font-size: 13px; }
+.swoo-error { color: #a00; }
+
+.swoo-see-all {
+	display: block;
+	flex: 0 0 auto;
+	width: 100%;
+	min-height: 46px;
+	padding: 12px 15px;
+	border: 0;
+	border-top: 1px solid var(--swoo-border);
+	background: var(--swoo-bg);
+	color: var(--swoo-button-color);
+	font: inherit;
+	font-weight: 500;
+	text-align: center;
+	cursor: pointer;
+}
+
+.swoo-see-all:hover,
+.swoo-see-all:focus {
+	background: color-mix(in srgb, var(--swoo-hover) 22%, var(--swoo-bg));
+	color: var(--swoo-button-color) !important;
+	outline: none;
+}
+
+@keyframes swoo-spin { to { transform: rotate(360deg); } }
+
+@media (max-width: 500px) {
+	.swoo-search { max-width: none; font-size: 14px; }
+	.swoo-results { max-height: 65vh; border-radius: 8px; }
+	.swoo-result { gap: 10px; padding: 12px 13px; }
+	.swoo-result-title { font-size: 14px; }
+	.swoo-price,
+	.swoo-price * { font-size: 13px; }
+}
